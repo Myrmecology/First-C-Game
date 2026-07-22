@@ -1,0 +1,33 @@
+# --- Security: credentials & keys ---
+*.pem
+*.key
+*.pub
+id_rsa
+id_ed25519
+*.ppk
+.env
+.env.*
+*.asc
+*.gpg
+secrets.txt
+credentials.json
+
+# --- C build artifacts ---
+*.o
+*.obj
+*.exe
+*.out
+*.exe~
+raycaster
+raycaster.exe
+
+# --- Editor / OS junk ---
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# --- Build folders ---
+build/
+bin/
+obj/
