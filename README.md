@@ -1,32 +1,48 @@
 # Terminal Raycaster
 
 A pseudo-3D raycasting engine built from scratch in C, rendered entirely
-with ASCII characters in the terminal — no graphics libraries required.
+with colored ASCII characters in the Windows console — no graphics
+libraries required.
 
 Inspired by the raycasting technique used in classic games like Wolfenstein 3D.
 
-## Status
-🚧 Work in progress — built live on [YouTube channel: Neural Node & Code].
+## Features
+- Real-time 3D-style rendering using raycasting
+- Colored walls (shaded by distance and wall orientation)
+- Shootable enemies with sound feedback
+- Collision detection
 
-## Features (planned)
-- 2D grid-based map
-- Real-time raycasting with distance-based shading
-- WASD movement and rotation
-- (More coming soon!)
+## Requirements
+- Windows (uses the Windows Console API and `conio.h` for input)
+- `gcc` (e.g. via MinGW)
 
-## Build & Run
+## Build
 
 ```bash
-make
-./raycaster
+gcc -Wall -Wextra -std=c11 -o raycaster raycaster.c -lm
+```
+
+## Run
+
+**Must be run from Command Prompt or PowerShell — not Git Bash**, since keyboard input relies on the native Windows console.
+
+```bash
+raycaster.exe
 ```
 
 ## Controls
-- `W` — move forward
-- `S` — move backward
-- `A` — rotate left
-- `D` — rotate right
-- `Q` — quit
+| Key     | Action        |
+|---------|---------------|
+| `W`     | Move forward  |
+| `S`     | Move backward |
+| `A`     | Rotate left   |
+| `D`     | Rotate right  |
+| `Space` | Shoot         |
+| `Q`     | Quit          |
 
 ## How it works
-Coming soon — full writeup once the engine is complete.
+The engine casts a ray for every column of the screen, calculates how
+far it travels before hitting a wall, and uses that distance to
+determine wall height and shading — creating the illusion of 3D depth
+from 2D math. Enemies are rendered as distance-scaled sprites layered
+on top of the walls using a z-buffer for correct occlusion.
